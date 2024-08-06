@@ -1,5 +1,9 @@
 package config
 
+import (
+	_ "embed"
+)
+
 type Config struct {
 	ApiVersion string   `yaml:"apiVersion"`
 	Kind       string   `yaml:"kind"`
@@ -22,9 +26,9 @@ type Drive struct {
 
 var (
 	Build   string
+	Commit  string
 	Version string
 )
 
-func New() *Config {
-	return &Config{}
-}
+//go:embed config.yml
+var ConfigData string
