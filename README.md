@@ -80,4 +80,4 @@ Project License can be found [here](LICENSE).
 
 ## Reference
 
-- [warp](https://www.warp.dev/)
+- [bubbletea](https://github.com/charmbracelet/bubbletea/)
