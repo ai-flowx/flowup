@@ -51,7 +51,7 @@ var (
 	checkMark           = lipgloss.NewStyle().Foreground(lipgloss.Color("42")).SetString("✓")
 )
 
-type packageModel struct {
+type PackageModel struct {
 	packages []string
 	index    int
 	width    int
@@ -64,7 +64,7 @@ type packageModel struct {
 type installedPkgMsg string
 
 // nolint:mnd
-func newModel() packageModel {
+func NewPackageModel() PackageModel {
 	p := progress.New(
 		progress.WithDefaultGradient(),
 		progress.WithWidth(40),
@@ -72,18 +72,20 @@ func newModel() packageModel {
 	)
 	s := spinner.New()
 	s.Style = lipgloss.NewStyle().Foreground(lipgloss.Color("63"))
-	return packageModel{
+	return PackageModel{
 		packages: getPackages(),
 		spinner:  s,
 		progress: p,
 	}
 }
 
-func (m *packageModel) Init() tea.Cmd {
+// nolint:gocritic
+func (m PackageModel) Init() tea.Cmd {
 	return tea.Batch(downloadAndInstall(m.packages[m.index]), m.spinner.Tick)
 }
 
-func (m *packageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+// nolint:gocritic
+func (m PackageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		m.width, m.height = msg.Width, msg.Height
@@ -126,7 +128,8 @@ func (m *packageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-func (m *packageModel) View() string {
+// nolint:gocritic
+func (m PackageModel) View() string {
 	n := len(m.packages)
 	w := lipgloss.Width(fmt.Sprintf("%d", n))
 
