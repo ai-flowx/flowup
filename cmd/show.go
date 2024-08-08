@@ -50,7 +50,10 @@ func runShow(_ *config.Config) error {
 	fmt.Printf("--------------------\n\n")
 	color.Unset()
 
-	fmt.Printf("TBD\n")
+	fmt.Printf("shai 1.0.0\n")
+	fmt.Printf("gitgpt 1.0.0\n")
+	fmt.Printf("lintgpt 1.0.0\n")
+	fmt.Printf("metalgpt 1.0.0\n")
 	fmt.Printf("\n")
 
 	return nil

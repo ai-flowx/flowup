@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/cligpt/shup/config"
 	"github.com/cligpt/shup/view"
 )

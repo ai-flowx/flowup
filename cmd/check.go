@@ -4,10 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cligpt/shup/view"
-
-	"github.com/charmbracelet/bubbles/progress"
-	tea "github.com/charmbracelet/bubbletea"
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -38,13 +35,29 @@ func init() {
 }
 
 func runCheck(cfg *config.Config) error {
-	m := view.ProgressModel{
-		Progress: progress.New(progress.WithDefaultGradient()),
-	}
+	color.Set(color.Bold)
+	fmt.Printf("shai - ")
+	fmt.Printf(color.YellowString("update available "))
+	color.Unset()
+	fmt.Printf(": 1.0.0 -> 1.1.0\n")
 
-	if _, err := tea.NewProgram(m).Run(); err != nil {
-		return err
-	}
+	color.Set(color.Bold)
+	fmt.Printf("gitgpt - ")
+	fmt.Printf(color.YellowString("update available "))
+	color.Unset()
+	fmt.Printf(": 1.0.0 -> 1.1.0\n")
+
+	color.Set(color.Bold)
+	fmt.Printf("lintgpt - ")
+	fmt.Printf(color.YellowString("update available "))
+	color.Unset()
+	fmt.Printf(": 1.0.0 -> 1.1.0\n")
+
+	color.Set(color.Bold)
+	fmt.Printf("metalgpt - ")
+	fmt.Printf(color.GreenString("up to date "))
+	color.Unset()
+	fmt.Printf(": 1.1.0\n")
 
 	return nil
 }
