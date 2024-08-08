@@ -6,7 +6,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/charmbracelet/bubbles/progress"
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -36,7 +35,6 @@ type PackageModel struct {
 	width    int
 	height   int
 	spinner  spinner.Model
-	progress progress.Model
 	done     bool
 }
 
@@ -44,17 +42,11 @@ type installedPkgMsg string
 
 // nolint:mnd
 func NewPackageModel() PackageModel {
-	p := progress.New(
-		progress.WithDefaultGradient(),
-		progress.WithWidth(40),
-		progress.WithoutPercentage(),
-	)
 	s := spinner.New()
 	s.Style = lipgloss.NewStyle().Foreground(lipgloss.Color("63"))
 	return PackageModel{
 		packages: getPackages(),
 		spinner:  s,
-		progress: p,
 	}
 }
 
@@ -83,25 +75,14 @@ func (m PackageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				tea.Quit,                            // exit the program
 			)
 		}
-
-		// Update progress bar
 		m.index++
-		progressCmd := m.progress.SetPercent(float64(m.index) / float64(len(m.packages)))
-
 		return m, tea.Batch(
-			progressCmd,
 			tea.Printf("%s %s", checkMark, pkg),     // print success message above our program
 			downloadAndInstall(m.packages[m.index]), // download the next package
 		)
 	case spinner.TickMsg:
 		var cmd tea.Cmd
 		m.spinner, cmd = m.spinner.Update(msg)
-		return m, cmd
-	case progress.FrameMsg:
-		newModel, cmd := m.progress.Update(msg)
-		if newModel, ok := newModel.(progress.Model); ok {
-			m.progress = newModel
-		}
 		return m, cmd
 	}
 	return m, nil
@@ -119,16 +100,15 @@ func (m PackageModel) View() string {
 	pkgCount := fmt.Sprintf(" %*d/%*d", w, m.index, w, n)
 
 	spin := m.spinner.View() + " "
-	prog := m.progress.View()
-	cellsAvail := max(0, m.width-lipgloss.Width(spin+prog+pkgCount))
+	cellsAvail := max(0, m.width-lipgloss.Width(spin+pkgCount))
 
 	pkgName := currentPkgNameStyle.Render(m.packages[m.index])
 	info := lipgloss.NewStyle().MaxWidth(cellsAvail).Render("Installing " + pkgName)
 
-	cellsRemaining := max(0, m.width-lipgloss.Width(spin+info+prog+pkgCount))
+	cellsRemaining := max(0, m.width-lipgloss.Width(spin+info+pkgCount))
 	gap := strings.Repeat(" ", cellsRemaining)
 
-	return spin + info + gap + prog + pkgCount
+	return spin + info + gap + pkgCount
 }
 
 // nolint:gosec,mnd
