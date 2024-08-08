@@ -26,7 +26,12 @@ var rootCmd = &cobra.Command{
 	Version: config.Version + "-build-" + config.Build,
 	Short:   "shai installer",
 	Long:    fmt.Sprintf("shai installer %s (%s %s)", config.Version, config.Commit, config.Build),
-	Run:     func(cmd *cobra.Command, args []string) {},
+	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			_ = cmd.Help()
+			os.Exit(0)
+		}
+	},
 }
 
 // nolint:gochecknoinits
