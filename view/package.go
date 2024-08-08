@@ -12,42 +12,21 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+const (
+	doneMessage = "shai is installed now. Great!\n"
+)
+
 var packages = []string{
-	"vegeutils",
-	"libgardening",
-	"currykit",
-	"spicerack",
-	"fullenglish",
-	"eggy",
-	"bad-kitty",
-	"chai",
-	"hojicha",
-	"libtacos",
-	"babys-monads",
-	"libpurring",
-	"currywurst-devel",
-	"xmodmeow",
-	"licorice-utils",
-	"cashew-apple",
-	"rock-lobster",
-	"standmixer",
-	"coffee-CUPS",
-	"libesszet",
-	"zeichenorientierte-benutzerschnittstellen",
-	"schnurrkit",
-	"old-socks-devel",
-	"jalapeño",
-	"molasses-utils",
-	"xkohlrabi",
-	"party-gherkin",
-	"snow-peas",
-	"libyuzu",
+	"shai",
+	"gitgpt",
+	"lintgpt",
+	"metalgpt",
 }
 
 // nolint:mnd
 var (
 	currentPkgNameStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("211"))
-	doneStyle           = lipgloss.NewStyle().Margin(1, 2)
+	doneStyle           = lipgloss.NewStyle().Margin(1, 0)
 	checkMark           = lipgloss.NewStyle().Foreground(lipgloss.Color("42")).SetString("✓")
 )
 
@@ -134,7 +113,7 @@ func (m PackageModel) View() string {
 	w := lipgloss.Width(fmt.Sprintf("%d", n))
 
 	if m.done {
-		return doneStyle.Render(fmt.Sprintf("Done! Installed %d packages.\n", n))
+		return doneStyle.Render(fmt.Sprintf(doneMessage))
 	}
 
 	pkgCount := fmt.Sprintf(" %*d/%*d", w, m.index, w, n)
@@ -172,7 +151,8 @@ func getPackages() []string {
 	})
 
 	for k := range pkgs {
-		pkgs[k] += fmt.Sprintf("-%d.%d.%d", rand.Intn(10), rand.Intn(10), rand.Intn(10))
+		pkgs[k] += fmt.Sprintf(" %d.%d.%d", 1, 0, 0)
 	}
+
 	return pkgs
 }

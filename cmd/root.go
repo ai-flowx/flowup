@@ -13,8 +13,10 @@ import (
 
 const (
 	dirPerm  = 0755
-	fileName = ".shai/shup.yml"
 	filePerm = 0644
+
+	configName = ".shai/shup.yml"
+	envName    = ".shai/env"
 )
 
 var (
@@ -43,20 +45,23 @@ func init() {
 }
 
 func initConfig() {
-	helper := func(name string) error {
-		if _, err := os.Stat(name); err != nil {
-			_ = os.Mkdir(filepath.Dir(name), dirPerm)
-			if err := os.WriteFile(name, []byte(config.ConfigData), filePerm); err != nil {
-				return err
-			}
+	helper := func(_config, _env string) error {
+		if _, err := os.Stat(_config); err != nil {
+			_ = os.Mkdir(filepath.Dir(_config), dirPerm)
+		}
+		if err := os.WriteFile(_config, []byte(config.ConfigData), filePerm); err != nil {
+			return err
+		}
+		if err := os.WriteFile(_env, []byte(config.EnvData), filePerm); err != nil {
+			return err
 		}
 		return nil
 	}
 
 	if configFile == "" {
 		home, _ := os.UserHomeDir()
-		configFile = filepath.Join(home, fileName)
-		if err := helper(configFile); err != nil {
+		configFile = filepath.Join(home, configName)
+		if err := helper(configFile, filepath.Join(home, envName)); err != nil {
 			_, _ = fmt.Fprintln(os.Stderr, err.Error())
 			return
 		}

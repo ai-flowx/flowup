@@ -12,6 +12,18 @@ import (
 	"github.com/cligpt/shup/view"
 )
 
+const (
+	envMessage = "To get started you may need to restart your current shell.\n" +
+		"This would reload your PATH environment variable to include\n" +
+		"shai's bin directory ($HOME/.shai/bin).\n" +
+		"\n" +
+		"To configure your current shell, you need to source\n" +
+		"the corresponding env file under $HOME/.shai.\n" +
+		"\n" +
+		"This is usually done by running one of the following (note the leading DOT):\n" +
+		". \"$HOME/.shai/env\""
+)
+
 var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Update toolchains and shup",
@@ -27,6 +39,7 @@ var updateCmd = &cobra.Command{
 			_, _ = fmt.Fprintln(os.Stderr, err.Error())
 			return
 		}
+		_, _ = fmt.Fprintln(os.Stdout, envMessage)
 	},
 }
 

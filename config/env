@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# shup shell setup
+# affix colons on either side of $PATH to simplify matching
+case ":${PATH}:" in
+    *:"$HOME/.shai/bin":*)
+        ;;
+    *)
+        export PATH="$HOME/.shai/bin:$PATH"
+        ;;
+esac
