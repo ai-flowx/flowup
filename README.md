@@ -40,7 +40,7 @@ Usage:
 Available Commands:
   check       Check for updates to toolchains and shup
   help        Help about any command
-  show        Show the active and installed toolchains
+  show        Show the installed toolchains
   update      Update toolchains and shup
 
 Flags:
