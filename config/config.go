@@ -28,10 +28,11 @@ type MetaData struct {
 }
 
 type Spec struct {
-	Drive Drive `yaml:"drive"`
+	Artifact Artifact `yaml:"artifact"`
 }
 
-type Drive struct {
-	Host string `yaml:"host"`
-	Port int    `yaml:"port"`
+type Artifact struct {
+	Url  string `yaml:"url"`
+	User int    `yaml:"user"`
+	Pass int    `yaml:"pass"`
 }

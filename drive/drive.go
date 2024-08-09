@@ -70,10 +70,9 @@ func (d *drive) Run(ctx context.Context, name, arch, os string) (version, url, u
 }
 
 func (d *drive) initConn(_ context.Context) error {
+	var host string
+	var port int
 	var err error
-
-	host := d.cfg.Config.Spec.Drive.Host
-	port := d.cfg.Config.Spec.Drive.Port
 
 	d.conn, err = grpc.NewClient(host+":"+strconv.Itoa(port),
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
