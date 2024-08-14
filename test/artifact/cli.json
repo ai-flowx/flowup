@@ -1,0 +1,26 @@
+{
+    "repo" : "name",
+    "path" : "/path/to/cli",
+    "created" : "2024-07-16T11:36:43.653+08:00",
+    "createdBy" : "user",
+    "lastModified" : "2024-07-16T11:36:43.653+08:00",
+    "modifiedBy" : "user",
+    "lastUpdated" : "2024-07-16T11:36:43.653+08:00",
+    "children" : [ {
+      "uri" : "/shgpt",
+      "folder" : true
+    }, {
+      "uri" : "/shai",
+      "folder" : false
+    }, {
+      "uri" : "/shai-1.0.0-linux-amd64.deb",
+      "folder" : false
+    }, {
+      "uri" : "/shup",
+      "folder" : false
+    }, {
+      "uri" : "/shup-1.0.0-linux-amd64",
+      "folder" : false
+    } ],
+    "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli"
+  }

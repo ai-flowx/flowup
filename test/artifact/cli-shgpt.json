@@ -1,0 +1,47 @@
+{
+    "repo" : "name",
+    "path" : "/path/to/cli/shgpt",
+    "created" : "2024-07-16T11:36:45.840+08:00",
+    "createdBy" : "user",
+    "lastModified" : "2024-07-16T11:36:45.840+08:00",
+    "modifiedBy" : "user",
+    "lastUpdated" : "2024-07-16T11:36:45.840+08:00",
+    "children" : [ {
+      "uri" : "/codegpt",
+      "folder" : false
+    }, {
+      "uri" : "/codegpt-1.0.0-linux-amd64",
+      "folder" : false
+    }, {
+      "uri" : "/dockergpt",
+      "folder" : false
+    }, {
+      "uri" : "/dockergpt-1.0.0-rc1-linux-amd64",
+      "folder" : false
+    }, {
+      "uri" : "/gitgpt",
+      "folder" : false
+    }, {
+      "uri" : "/gitgpt-1.0.0-linux-amd64",
+      "folder" : false
+    }, {
+      "uri" : "/hellogpt",
+      "folder" : false
+    }, {
+      "uri" : "/hellogpt-1.0.0-rc1-linux-amd64",
+      "folder" : false
+    }, {
+      "uri" : "/lintgpt",
+      "folder" : false
+    }, {
+      "uri" : "/lintgpt-1.0.0-linux-amd64",
+      "folder" : false
+    }, {
+      "uri" : "/metalgpt",
+      "folder" : false
+    }, {
+      "uri" : "/metalgpt-1.0.0-rc1-linux-amd64",
+      "folder" : false
+    } ],
+    "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli/shgpt"
+  }
