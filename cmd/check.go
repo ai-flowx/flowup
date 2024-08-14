@@ -36,28 +36,28 @@ func init() {
 
 func runCheck(cfg *config.Config) error {
 	color.Set(color.Bold)
-	fmt.Printf("shai - ")
-	fmt.Printf(color.YellowString("update available "))
+	fmt.Print("shai - ")
+	fmt.Print(color.YellowString("update available "))
 	color.Unset()
-	fmt.Printf(": 1.0.0 -> 1.1.0\n")
+	fmt.Print(": 1.0.0 -> 1.1.0\n")
 
 	color.Set(color.Bold)
-	fmt.Printf("gitgpt - ")
-	fmt.Printf(color.YellowString("update available "))
+	fmt.Print("gitgpt - ")
+	fmt.Print(color.YellowString("update available "))
 	color.Unset()
-	fmt.Printf(": 1.0.0 -> 1.1.0\n")
+	fmt.Print(": 1.0.0 -> 1.1.0\n")
 
 	color.Set(color.Bold)
-	fmt.Printf("lintgpt - ")
-	fmt.Printf(color.YellowString("update available "))
+	fmt.Print("lintgpt - ")
+	fmt.Print(color.YellowString("update available "))
 	color.Unset()
-	fmt.Printf(": 1.0.0 -> 1.1.0\n")
+	fmt.Print(": 1.0.0 -> 1.1.0\n")
 
 	color.Set(color.Bold)
-	fmt.Printf("metalgpt - ")
-	fmt.Printf(color.GreenString("up to date "))
+	fmt.Print("metalgpt - ")
+	fmt.Print(color.GreenString("up to date "))
 	color.Unset()
-	fmt.Printf(": 1.1.0\n")
+	fmt.Print(": 1.1.0\n")
 
 	return nil
 }
