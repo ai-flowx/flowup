@@ -65,9 +65,10 @@ kind: shup
 metadata:
   name: shup
 spec:
-  drive:
-    host: 127.0.0.1
-    port: 65050
+  artifact:
+    url: http://127.0.0.1:8080
+    user: user
+    pass: pass
 ```
 
 
