@@ -36,7 +36,7 @@ func init() {
 
 func runShow(_ *config.Config) error {
 	color.Set(color.Bold)
-	fmt.Printf("default host: ")
+	fmt.Printf("shai host: ")
 	color.Unset()
 	fmt.Printf("%s\n", "ubuntu-22.04-x86_64")
 

@@ -4,6 +4,15 @@ import (
 	_ "embed"
 )
 
+const (
+	DirPerm  = 0755
+	FilePerm = 0644
+
+	BinName    = ".shai/bin"
+	ConfigName = ".shai/shup.yml"
+	EnvName    = ".shai/env"
+)
+
 var (
 	Build   string
 	Commit  string

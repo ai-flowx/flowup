@@ -1,0 +1,17 @@
+{
+    "repo" : "name",
+    "path" : "/path/to/cli/release",
+    "created" : "2024-07-16T11:36:43.653+08:00",
+    "createdBy" : "user",
+    "lastModified" : "2024-07-16T11:36:43.653+08:00",
+    "modifiedBy" : "user",
+    "lastUpdated" : "2024-07-16T11:36:43.653+08:00",
+    "children" : [ {
+      "uri" : "/1.0.0",
+      "folder" : true
+    }, {
+      "uri" : "/1.0.0-rc1",
+      "folder" : true
+    } ],
+    "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli/release"
+  }
