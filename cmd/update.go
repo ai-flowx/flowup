@@ -43,8 +43,14 @@ var updateCmd = &cobra.Command{
 	},
 }
 
+var (
+	updateChannel string
+)
+
 // nolint:gochecknoinits
 func init() {
+	updateCmd.Flags().StringVarP(&updateChannel, "channel", "c", config.ChannelRelease, "update channel")
+
 	rootCmd.AddCommand(updateCmd)
 }
 

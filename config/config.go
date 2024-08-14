@@ -5,12 +5,19 @@ import (
 )
 
 const (
-	DirPerm  = 0755
-	FilePerm = 0644
+	ChannelNightly = "nightly"
+	ChannelRelease = "release"
+)
 
+const (
 	BinName    = ".shai/bin"
 	ConfigName = ".shai/shup.yml"
 	EnvName    = ".shai/env"
+)
+
+const (
+	DirPerm  = 0755
+	FilePerm = 0644
 )
 
 var (
