@@ -10,9 +10,10 @@ const (
 )
 
 const (
-	BinName    = ".shai/bin"
-	ConfigName = ".shai/shup.yml"
-	EnvName    = ".shai/env"
+	RootName   = ".shai"
+	BinName    = RootName + "/" + "bin"
+	ConfigName = RootName + "/" + "shup.yml"
+	EnvName    = RootName + "/" + "env"
 )
 
 const (

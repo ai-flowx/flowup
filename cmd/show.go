@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/fatih/color"
 	"github.com/shirou/gopsutil/v3/host"
@@ -43,10 +44,13 @@ func runShow(_ *config.Config) error {
 	color.Unset()
 	fmt.Printf("%s\n", info)
 
+	home, _ := os.UserHomeDir()
+	path := filepath.Join(home, config.RootName)
+
 	color.Set(color.Bold)
 	fmt.Printf("home: ")
 	color.Unset()
-	fmt.Printf("%s\n\n", "/home/zte/.shai")
+	fmt.Printf("%s\n\n", path)
 
 	color.Set(color.Bold)
 	fmt.Printf("installed toolchains\n")
