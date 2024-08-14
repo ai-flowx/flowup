@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestShow(t *testing.T) {
-	assert.Equal(t, nil, nil)
+func TestHostInfo(t *testing.T) {
+	_, err := hostInfo()
+	assert.Equal(t, nil, err)
 }

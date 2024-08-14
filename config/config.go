@@ -49,6 +49,6 @@ type Spec struct {
 
 type Artifact struct {
 	Url  string `yaml:"url"`
-	User int    `yaml:"user"`
-	Pass int    `yaml:"pass"`
+	User string `yaml:"user"`
+	Pass string `yaml:"pass"`
 }

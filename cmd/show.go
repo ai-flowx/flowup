@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/fatih/color"
+	"github.com/shirou/gopsutil/v3/host"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -35,13 +36,15 @@ func init() {
 }
 
 func runShow(_ *config.Config) error {
-	color.Set(color.Bold)
-	fmt.Printf("shai host: ")
-	color.Unset()
-	fmt.Printf("%s\n", "ubuntu-22.04-x86_64")
+	info, _ := hostInfo()
 
 	color.Set(color.Bold)
-	fmt.Printf("shai home: ")
+	fmt.Printf("host: ")
+	color.Unset()
+	fmt.Printf("%s\n", info)
+
+	color.Set(color.Bold)
+	fmt.Printf("home: ")
 	color.Unset()
 	fmt.Printf("%s\n\n", "/home/zte/.shai")
 
@@ -57,4 +60,13 @@ func runShow(_ *config.Config) error {
 	fmt.Printf("\n")
 
 	return nil
+}
+
+func hostInfo() (string, error) {
+	info, err := host.Info()
+	if err != nil {
+		return "unknown", err
+	}
+
+	return fmt.Sprintf("%s-%s-%s", info.Platform, info.PlatformVersion, info.KernelArch), nil
 }
