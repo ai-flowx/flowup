@@ -10,7 +10,25 @@
       "uri" : "/1.0.0",
       "folder" : true
     }, {
-      "uri" : "/1.0.0-rc1",
+      "uri" : "/1.0.1",
+      "folder" : true
+    }, {
+      "uri" : "/1.1.0",
+      "folder" : true
+    }, {
+      "uri" : "/1.1.1",
+      "folder" : true
+    }, {
+      "uri" : "/2.0.0",
+      "folder" : true
+    }, {
+      "uri" : "/2.0.1",
+      "folder" : true
+    }, {
+      "uri" : "/2.1.0",
+      "folder" : true
+    }, {
+      "uri" : "/2.1.1",
       "folder" : true
     } ],
     "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli/release"

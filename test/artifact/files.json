@@ -12,6 +12,9 @@
     }, {
       "uri" : "/shai",
       "folder" : false
+    }, {
+      "uri" : "/shup",
+      "folder" : false
     } ],
     "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli/release/1.0.0"
   }
