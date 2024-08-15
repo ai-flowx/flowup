@@ -7,16 +7,12 @@ import (
 const (
 	ChannelNightly = "nightly"
 	ChannelRelease = "release"
-)
 
-const (
 	RootName   = ".shai"
 	BinName    = RootName + "/" + "bin"
 	ConfigName = RootName + "/" + "shup.yml"
 	EnvName    = RootName + "/" + "env"
-)
 
-const (
 	DirPerm  = 0755
 	FilePerm = 0644
 )
