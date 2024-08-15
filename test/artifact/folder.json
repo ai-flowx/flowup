@@ -7,28 +7,28 @@
     "modifiedBy" : "user",
     "lastUpdated" : "2024-07-16T11:36:43.653+08:00",
     "children" : [ {
-      "uri" : "/1.0.0",
+      "uri" : "/v1.0.0",
       "folder" : true
     }, {
-      "uri" : "/1.0.1",
+      "uri" : "/v1.0.1",
       "folder" : true
     }, {
-      "uri" : "/1.1.0",
+      "uri" : "/v1.1.0",
       "folder" : true
     }, {
-      "uri" : "/1.1.1",
+      "uri" : "/v1.1.1",
       "folder" : true
     }, {
-      "uri" : "/2.0.0",
+      "uri" : "/v2.0.0",
       "folder" : true
     }, {
-      "uri" : "/2.0.1",
+      "uri" : "/v2.0.1",
       "folder" : true
     }, {
-      "uri" : "/2.1.0",
+      "uri" : "/v2.1.0",
       "folder" : true
     }, {
-      "uri" : "/2.1.1",
+      "uri" : "/v2.1.1",
       "folder" : true
     } ],
     "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli/release"
