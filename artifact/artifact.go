@@ -37,6 +37,10 @@ func New(_ context.Context, cfg *Config) Artifact {
 	}
 }
 
+func DefaultConfig() *Config {
+	return &Config{}
+}
+
 func (a *artifact) Init(_ context.Context) error {
 	return nil
 }

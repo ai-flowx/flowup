@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	versionLen = 3
+	showVersionLen = 3
 )
 
 var showCmd = &cobra.Command{
@@ -92,7 +92,7 @@ func fetchToolchain(path string) ([]string, error) {
 			return "", err
 		}
 		buf := strings.Split(string(out), " ")
-		if len(buf) != versionLen {
+		if len(buf) != showVersionLen {
 			return "", err
 		}
 		// shup version v1.0.0-build-2024-08-16T11:33:19+0800
