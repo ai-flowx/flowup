@@ -5,11 +5,17 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/pkg/errors"
 
 	"github.com/cligpt/shup/config"
+)
+
+const (
+	apiFetch = "/zd-devops-nj-release-generic/aiops-codegpt/cli"
+	apiQuery = "/api/storage/zd-devops-nj-release-generic/aiops-codegpt/cli"
 )
 
 var (
@@ -20,7 +26,8 @@ var (
 type Artifact interface {
 	Init(context.Context) error
 	Deinit(context.Context) error
-	Run(context.Context, string, string) ([]string, error)
+	Fetch(context.Context, string, string, string, string) error
+	Query(context.Context, string, string) ([]string, error)
 }
 
 type Config struct {
@@ -49,7 +56,50 @@ func (a *artifact) Deinit(_ context.Context) error {
 	return nil
 }
 
-func (a *artifact) Run(_ context.Context, channel, version string) ([]string, error) {
+func (a *artifact) Fetch(_ context.Context, channel, version, name, install string) error {
+	helper := func(data []byte, install string) error {
+		file, err := os.OpenFile(install, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, config.BinPerm)
+		if err != nil {
+			return err
+		}
+		defer func(file *os.File) {
+			_ = file.Close()
+		}(file)
+		if _, err := file.Write(data); err != nil {
+			return err
+		}
+		return nil
+	}
+
+	url := a.cfg.Config.Spec.Artifact.Url
+	user := a.cfg.Config.Spec.Artifact.User
+	pass := a.cfg.Config.Spec.Artifact.Pass
+
+	url = url + apiFetch + "/" + channel
+
+	if channel == config.ChannelRelease {
+		if version != "" {
+			url += "/" + version + "/" + name
+		}
+	} else if channel == config.ChannelNightly {
+		url += name
+	} else {
+		return errors.New("invalid channel")
+	}
+
+	body, err := a.get(url, user, pass)
+	if err != nil {
+		return err
+	}
+
+	if err := helper(body, install); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (a *artifact) Query(_ context.Context, channel, version string) ([]string, error) {
 	var body []byte
 	var buf map[string]interface{}
 	var err error
@@ -58,7 +108,7 @@ func (a *artifact) Run(_ context.Context, channel, version string) ([]string, er
 	user := a.cfg.Config.Spec.Artifact.User
 	pass := a.cfg.Config.Spec.Artifact.Pass
 
-	url = url + "/cli/" + channel
+	url = url + apiQuery + "/" + channel
 	if channel == config.ChannelRelease && version != "" {
 		url += "/" + version
 	}

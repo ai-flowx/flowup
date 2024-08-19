@@ -1,26 +1,23 @@
 package view
 
 import (
+	"context"
 	"fmt"
-	"math/rand"
+	"os"
+	"path/filepath"
 	"strings"
-	"time"
 
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+
+	"github.com/cligpt/shup/artifact"
+	"github.com/cligpt/shup/config"
 )
 
 const (
 	doneMessage = "shai is installed now. Great!\n"
 )
-
-var packages = []string{
-	"shai",
-	"gitgpt",
-	"lintgpt",
-	"metalgpt",
-}
 
 // nolint:mnd
 var (
@@ -30,6 +27,8 @@ var (
 )
 
 type PackageModel struct {
+	cfg      *config.Config
+	channel  string
 	packages []string
 	index    int
 	width    int
@@ -41,18 +40,20 @@ type PackageModel struct {
 type installedPkgMsg string
 
 // nolint:mnd
-func NewPackageModel() PackageModel {
+func NewPackageModel(cfg *config.Config, channel string, packages []string) PackageModel {
 	s := spinner.New()
 	s.Style = lipgloss.NewStyle().Foreground(lipgloss.Color("63"))
 	return PackageModel{
-		packages: getPackages(),
+		cfg:      cfg,
+		channel:  channel,
+		packages: packages,
 		spinner:  s,
 	}
 }
 
 // nolint:gocritic
 func (m PackageModel) Init() tea.Cmd {
-	return tea.Batch(downloadAndInstall(m.packages[m.index]), m.spinner.Tick)
+	return tea.Batch(m.downloadAndInstall(m.packages[m.index]), m.spinner.Tick)
 }
 
 // nolint:gocritic
@@ -77,8 +78,8 @@ func (m PackageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 		m.index++
 		return m, tea.Batch(
-			tea.Printf("%s %s", checkMark, pkg),     // print success message above our program
-			downloadAndInstall(m.packages[m.index]), // download the next package
+			tea.Printf("%s %s", checkMark, pkg),       // print success message above our program
+			m.downloadAndInstall(m.packages[m.index]), // download the next package
 		)
 	case spinner.TickMsg:
 		var cmd tea.Cmd
@@ -111,28 +112,40 @@ func (m PackageModel) View() string {
 	return spin + info + gap + pkgCount
 }
 
-// nolint:gosec,mnd
-func downloadAndInstall(pkg string) tea.Cmd {
-	// This is where you'd do i/o stuff to download and install packages. In
-	// our case we're just pausing for a moment to simulate the process.
-	d := time.Millisecond * time.Duration(rand.Intn(500))
-	return tea.Tick(d, func(t time.Time) tea.Msg {
+// nolint:gocritic
+func (m PackageModel) downloadAndInstall(pkg string) tea.Cmd {
+	return func() tea.Msg {
+		var version string
+
+		ctx := context.Background()
+
+		c := artifact.DefaultConfig()
+		c.Config = *m.cfg
+		a := artifact.New(ctx, c)
+
+		defer func(a artifact.Artifact, ctx context.Context) {
+			_ = a.Deinit(ctx)
+		}(a, ctx)
+
+		_ = a.Init(ctx)
+
+		if m.channel == config.ChannelRelease {
+			version = strings.Split(pkg, " ")[1]
+		} else if m.channel == config.ChannelNightly {
+			version = ""
+		} else {
+			return installedPkgMsg("")
+		}
+
+		name := strings.Split(pkg, " ")[0]
+
+		home, _ := os.UserHomeDir()
+		install := filepath.Join(home, config.BinName, name)
+
+		if err := a.Fetch(ctx, m.channel, "v"+version, name, install); err != nil {
+			return installedPkgMsg("")
+		}
+
 		return installedPkgMsg(pkg)
-	})
-}
-
-// nolint:gosec,mnd
-func getPackages() []string {
-	pkgs := packages
-	copy(pkgs, packages)
-
-	rand.Shuffle(len(pkgs), func(i, j int) {
-		pkgs[i], pkgs[j] = pkgs[j], pkgs[i]
-	})
-
-	for k := range pkgs {
-		pkgs[k] += fmt.Sprintf(" %d.%d.%d", 1, 0, 0)
 	}
-
-	return pkgs
 }

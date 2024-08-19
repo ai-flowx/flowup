@@ -13,6 +13,7 @@ const (
 	ConfigName = RootName + "/" + "shup.yml"
 	EnvName    = RootName + "/" + "env"
 
+	BinPerm  = 0755
 	DirPerm  = 0755
 	FilePerm = 0644
 )

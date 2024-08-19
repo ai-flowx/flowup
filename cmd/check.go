@@ -126,7 +126,7 @@ func remoteToolchain(cfg *config.Config) ([]string, error) {
 
 	_ = a.Init(ctx)
 
-	buf, err := a.Run(ctx, config.ChannelRelease, "")
+	buf, err := a.Query(ctx, config.ChannelRelease, "")
 	if err != nil {
 		return []string{}, err
 	}
@@ -136,7 +136,7 @@ func remoteToolchain(cfg *config.Config) ([]string, error) {
 		return []string{}, err
 	}
 
-	buf, err = a.Run(ctx, config.ChannelRelease, "v"+ver)
+	buf, err = a.Query(ctx, config.ChannelRelease, "v"+ver)
 	if err != nil {
 		return []string{}, err
 	}
