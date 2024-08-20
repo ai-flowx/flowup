@@ -137,12 +137,12 @@ func (m PackageModel) downloadAndInstall(pkg string) tea.Cmd {
 			return installedPkgMsg("")
 		}
 
+		home, _ := os.UserHomeDir()
+		_ = os.MkdirAll(filepath.Join(home, config.BinName), os.ModePerm)
+
 		name := strings.Split(pkg, " ")[0]
 
-		home, _ := os.UserHomeDir()
-		install := filepath.Join(home, config.BinName, name)
-
-		if err := a.Fetch(ctx, m.channel, "v"+version, name, install); err != nil {
+		if err := a.Fetch(ctx, m.channel, "v"+version, name, filepath.Join(home, config.BinName, name)); err != nil {
 			return installedPkgMsg("")
 		}
 
