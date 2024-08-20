@@ -69,6 +69,10 @@ func runCheck(cfg *config.Config) error {
 				fmt.Print(color.YellowString("update available "))
 				color.Unset()
 				fmt.Printf(": %s -> %s\n", b[1], b[2])
+			} else {
+				fmt.Print(color.GreenString("up to date "))
+				color.Unset()
+				fmt.Printf(": %s\n", b[1])
 			}
 		} else {
 			if v1 == nil && v2 != nil {
