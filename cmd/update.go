@@ -26,8 +26,8 @@ const (
 		"To configure your current shell, you need to source\n" +
 		"the corresponding env file under $HOME/.shai.\n" +
 		"\n" +
-		"This is usually done by running one of the following (note the leading DOT):\n" +
-		". \"$HOME/.shai/env\""
+		"This is usually done by running the following:\n" +
+		"source \"$HOME/.shai/env\""
 )
 
 var updateCmd = &cobra.Command{
@@ -45,7 +45,6 @@ var updateCmd = &cobra.Command{
 			_, _ = fmt.Fprintln(os.Stderr, err.Error())
 			return
 		}
-		_, _ = fmt.Fprintln(os.Stdout, envMessage)
 	},
 }
 
@@ -64,6 +63,8 @@ func runUpdate(cfg *config.Config) error {
 	var buf []string
 	var err error
 
+	fmt.Printf("syncing %s channel updates\n", updateChannel)
+
 	if updateChannel == config.ChannelRelease {
 		buf, err = fetchRelease(cfg)
 	} else if updateChannel == config.ChannelNightly {
@@ -76,9 +77,15 @@ func runUpdate(cfg *config.Config) error {
 		return errors.Wrap(err, "failed to fetch package")
 	}
 
+	if len(buf) == 0 {
+		return nil
+	}
+
 	if _, err := tea.NewProgram(view.NewPackageModel(cfg, updateChannel, buf)).Run(); err != nil {
 		return errors.Wrap(err, "failed to update package")
 	}
+
+	_, _ = fmt.Fprintln(os.Stdout, envMessage)
 
 	return nil
 }
@@ -104,10 +111,14 @@ func fetchRelease(cfg *config.Config) ([]string, error) {
 		if v1 != nil && v2 != nil {
 			if v1.LessThan(v2) {
 				ret = append(ret, fmt.Sprintf("%s %s", b[0], b[2]))
+			} else {
+				fmt.Printf("✓ %s unchanged\n", b[0])
 			}
 		} else {
 			if v1 == nil && v2 != nil {
 				ret = append(ret, fmt.Sprintf("%s %s", b[0], b[2]))
+			} else {
+				fmt.Printf("✓ %s unchanged\n", b[0])
 			}
 		}
 	}
