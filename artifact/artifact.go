@@ -20,7 +20,7 @@ const (
 
 var (
 	filterName   = []string{"shdrive"}
-	filterSuffix = []string{".deb", ".yml"}
+	filterSuffix = []string{".deb", ".exe", ".msi", ".yml", ".zip"}
 )
 
 type Artifact interface {
