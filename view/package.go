@@ -95,7 +95,7 @@ func (m PackageModel) View() string {
 	w := lipgloss.Width(fmt.Sprintf("%d", n))
 
 	if m.done {
-		return doneStyle.Render(fmt.Sprintf(doneMessage))
+		return doneStyle.Render(doneMessage)
 	}
 
 	pkgCount := fmt.Sprintf(" %*d/%*d", w, m.index, w, n)
