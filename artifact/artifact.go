@@ -10,7 +10,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/cligpt/shup/config"
+	"github.com/ai-shflow/shup/config"
 )
 
 const (

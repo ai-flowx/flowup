@@ -11,8 +11,8 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/cligpt/shup/artifact"
-	"github.com/cligpt/shup/config"
+	"github.com/ai-shflow/shup/artifact"
+	"github.com/ai-shflow/shup/config"
 )
 
 const (

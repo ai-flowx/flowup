@@ -14,7 +14,7 @@ builds:
     binary: shup
     flags:
       - -trimpath
-    ldflags: -s -w -X github.com/cligpt/shup/config.Build={{.Date}} -X github.com/cligpt/shup/config.Version={{.Version}}
+    ldflags: -s -w -X github.com/ai-shflow/shup/config.Build={{.Date}} -X github.com/ai-shflow/shup/config.Version={{.Version}}
 
 changelog:
   sort: asc

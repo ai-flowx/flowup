@@ -4,7 +4,7 @@ build=$(date +%FT%T%z)
 commit=$(git rev-parse --short HEAD)
 version="$1"
 
-ldflags="-s -w -X github.com/cligpt/shup/config.Build=$build -X github.com/cligpt/shup/config.Commit=$commit -X github.com/cligpt/shup/config.Version=$version"
+ldflags="-s -w -X github.com/ai-shflow/shup/config.Build=$build -X github.com/ai-shflow/shup/config.Commit=$commit -X github.com/ai-shflow/shup/config.Version=$version"
 target="shup"
 
 go env -w GOPROXY=https://goproxy.cn,direct

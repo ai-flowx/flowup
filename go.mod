@@ -1,4 +1,4 @@
-module github.com/cligpt/shup
+module github.com/ai-shflow/shup
 
 go 1.22.5
 

@@ -13,8 +13,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/cligpt/shup/artifact"
-	"github.com/cligpt/shup/config"
+	"github.com/ai-shflow/shup/artifact"
+	"github.com/ai-shflow/shup/config"
 )
 
 const (

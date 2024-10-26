@@ -1,16 +1,16 @@
 # shup
 
-[![Build Status](https://github.com/cligpt/shup/workflows/ci/badge.svg?branch=main&event=push)](https://github.com/cligpt/shup/actions?query=workflow%3Aci)
-[![codecov](https://codecov.io/gh/cligpt/shup/branch/main/graph/badge.svg?token=El8oiyaIsD)](https://codecov.io/gh/cligpt/shup)
-[![Go Report Card](https://goreportcard.com/badge/github.com/cligpt/shup)](https://goreportcard.com/report/github.com/cligpt/shup)
-[![License](https://img.shields.io/github/license/cligpt/shup.svg)](https://github.com/cligpt/shup/blob/main/LICENSE)
-[![Tag](https://img.shields.io/github/tag/cligpt/shup.svg)](https://github.com/cligpt/shup/tags)
+[![Build Status](https://github.com/ai-shflow/shup/workflows/ci/badge.svg?branch=main&event=push)](https://github.com/ai-shflow/shup/actions?query=workflow%3Aci)
+[![codecov](https://codecov.io/gh/ai-shflow/shup/branch/main/graph/badge.svg?token=El8oiyaIsD)](https://codecov.io/gh/ai-shflow/shup)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ai-shflow/shup)](https://goreportcard.com/report/github.com/ai-shflow/shup)
+[![License](https://img.shields.io/github/license/ai-shflow/shup.svg)](https://github.com/ai-shflow/shup/blob/main/LICENSE)
+[![Tag](https://img.shields.io/github/tag/ai-shflow/shup.svg)](https://github.com/ai-shflow/shup/tags)
 
 
 
 ## Introduction
 
-*shup* is the installer of [shai](https://github.com/cligpt/shai) written in Go.
+*shup* is the installer of [shai](https://github.com/ai-shflow/shai) written in Go.
 
 
 
@@ -55,9 +55,9 @@ Use "shup [command] --help" for more information about a command.
 
 ## Settings
 
-*shup* parameters can be set in the directory [config](https://github.com/cligpt/shup/blob/main/config).
+*shup* parameters can be set in the directory [config](https://github.com/ai-shflow/shup/blob/main/config).
 
-An example of configuration in [config.yml](https://github.com/cligpt/shup/blob/main/config/config.yml):
+An example of configuration in [config.yml](https://github.com/ai-shflow/shup/blob/main/config/config.yml):
 
 ```yaml
 apiVersion: v1

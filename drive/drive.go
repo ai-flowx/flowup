@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/cligpt/shup/config"
-	rpc "github.com/cligpt/shup/drive/rpc"
+	"github.com/ai-shflow/shup/config"
+	rpc "github.com/ai-shflow/shup/drive/rpc"
 )
 
 const (
