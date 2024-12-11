@@ -11,12 +11,12 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/ai-shflow/shup/artifact"
-	"github.com/ai-shflow/shup/config"
+	"github.com/ai-flowx/flowup/artifact"
+	"github.com/ai-flowx/flowup/config"
 )
 
 const (
-	doneMessage = "shai is installed now. Great!\n"
+	doneMessage = "flowx is installed now. Great!\n"
 )
 
 // nolint:mnd

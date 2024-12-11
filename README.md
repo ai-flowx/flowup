@@ -1,16 +1,16 @@
-# shup
+# flowup
 
-[![Build Status](https://github.com/ai-shflow/shup/workflows/ci/badge.svg?branch=main&event=push)](https://github.com/ai-shflow/shup/actions?query=workflow%3Aci)
-[![codecov](https://codecov.io/gh/ai-shflow/shup/branch/main/graph/badge.svg?token=El8oiyaIsD)](https://codecov.io/gh/ai-shflow/shup)
-[![Go Report Card](https://goreportcard.com/badge/github.com/ai-shflow/shup)](https://goreportcard.com/report/github.com/ai-shflow/shup)
-[![License](https://img.shields.io/github/license/ai-shflow/shup.svg)](https://github.com/ai-shflow/shup/blob/main/LICENSE)
-[![Tag](https://img.shields.io/github/tag/ai-shflow/shup.svg)](https://github.com/ai-shflow/shup/tags)
+[![Build Status](https://github.com/ai-flowx/flowup/workflows/ci/badge.svg?branch=main&event=push)](https://github.com/ai-flowx/flowup/actions?query=workflow%3Aci)
+[![codecov](https://codecov.io/gh/ai-flowx/flowup/branch/main/graph/badge.svg?token=El8oiyaIsD)](https://codecov.io/gh/ai-flowx/flowup)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ai-flowx/flowup)](https://goreportcard.com/report/github.com/ai-flowx/flowup)
+[![License](https://img.shields.io/github/license/ai-flowx/flowup.svg)](https://github.com/ai-flowx/flowup/blob/main/LICENSE)
+[![Tag](https://img.shields.io/github/tag/ai-flowx/flowup.svg)](https://github.com/ai-flowx/flowup/tags)
 
 
 
 ## Introduction
 
-*shup* is the installer of [shai](https://github.com/ai-shflow/shai) written in Go.
+*flowup* is the installer of [flowx](https://github.com/ai-flowx/flowx) written in Go.
 
 
 
@@ -31,39 +31,39 @@ version=latest make build
 ## Usage
 
 ```
-shai installer
+flowx installer
 
 Usage:
-  shup [flags]
-  shup [command]
+  flowup [flags]
+  flowup [command]
 
 Available Commands:
-  check       Check for updates to toolchains and shup
+  check       Check for updates to toolchains and flowup
   help        Help about any command
   show        Show the installed toolchains
-  update      Update toolchains and shup
+  update      Update toolchains and flowup
 
 Flags:
-      --config string   config file (default "$HOME/.shai/shup.yml")
-  -h, --help            help for shup
-  -v, --version         version for shup
+      --config string   config file (default "$HOME/.flowx/flowup.yml")
+  -h, --help            help for flowup
+  -v, --version         version for flowup
 
-Use "shup [command] --help" for more information about a command.
+Use "flowup [command] --help" for more information about a command.
 ```
 
 
 
 ## Settings
 
-*shup* parameters can be set in the directory [config](https://github.com/ai-shflow/shup/blob/main/config).
+*flowup* parameters can be set in the directory [config](https://github.com/ai-flowx/flowup/blob/main/config).
 
-An example of configuration in [config.yml](https://github.com/ai-shflow/shup/blob/main/config/config.yml):
+An example of configuration in [config.yml](https://github.com/ai-flowx/flowup/blob/main/config/config.yml):
 
 ```yaml
 apiVersion: v1
-kind: shup
+kind: flowup
 metadata:
-  name: shup
+  name: flowup
 spec:
   artifact:
     url: http://127.0.0.1:8080

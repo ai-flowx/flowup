@@ -16,13 +16,13 @@
       "uri" : "/metalgpt",
       "folder" : false
     }, {
-      "uri" : "/shai",
+      "uri" : "/flowx",
       "folder" : false
     }, {
-      "uri" : "/shai-1.0.0-linux-amd64.deb",
+      "uri" : "/flowx-1.0.0-linux-amd64.deb",
       "folder" : false
     }, {
-      "uri" : "/shai-config.yml",
+      "uri" : "/flowx-config.yml",
       "folder" : false
     }, {
       "uri" : "/shdrive",
@@ -31,10 +31,10 @@
       "uri" : "/shdrive-config.yml",
       "folder" : false
     }, {
-      "uri" : "/shup",
+      "uri" : "/flowup",
       "folder" : false
     }, {
-      "uri" : "/shup-config.yml",
+      "uri" : "/flowup-config.yml",
       "folder" : false
     } ],
     "uri" : "http://127.0.0.1/artifactory/api/storage/path/to/cli/release/v1.0.0"

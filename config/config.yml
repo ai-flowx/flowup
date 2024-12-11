@@ -1,7 +1,7 @@
 apiVersion: v1
-kind: shup
+kind: flowup
 metadata:
-  name: shup
+  name: flowup
 spec:
   artifact:
     url: http://127.0.0.1:8080

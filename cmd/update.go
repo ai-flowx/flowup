@@ -13,27 +13,27 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/ai-shflow/shup/artifact"
-	"github.com/ai-shflow/shup/config"
-	"github.com/ai-shflow/shup/view"
+	"github.com/ai-flowx/flowup/artifact"
+	"github.com/ai-flowx/flowup/config"
+	"github.com/ai-flowx/flowup/view"
 )
 
 const (
 	envMessage = "To get started you may need to restart your current shell.\n" +
 		"This would reload your PATH environment variable to include\n" +
-		"shai's bin directory ($HOME/.shai/bin).\n" +
+		"flowx's bin directory ($HOME/.flowx/bin).\n" +
 		"\n" +
 		"To configure your current shell, you need to source\n" +
-		"the corresponding env file under $HOME/.shai.\n" +
+		"the corresponding env file under $HOME/.flowx.\n" +
 		"\n" +
 		"This is usually done by running the following:\n" +
-		"source \"$HOME/.shai/env\""
+		"source \"$HOME/.flowx/env\""
 )
 
 var updateCmd = &cobra.Command{
 	Use:   "update",
-	Short: "Update toolchains and shup",
-	Long:  "Update toolchains and shup",
+	Short: "Update toolchains and flowup",
+	Long:  "Update toolchains and flowup",
 	Run: func(cmd *cobra.Command, args []string) {
 		var cfg config.Config
 		err := viper.Unmarshal(&cfg)

@@ -8,17 +8,13 @@ import (
 
 func TestMatchToolchain(t *testing.T) {
 	local := []string{
-		"other 1.0.0",
-		"shai 1.0.0",
-		"shgpt1 test",
-		"shup 2.0.0",
+		"flowx 1.0.0",
+		"flowup 2.0.0",
 	}
 
 	remote := []string{
-		"shai 1.1.0",
-		"shgpt1 1.0.0",
-		"shgpt2 1.0.0",
-		"shup 1.0.0",
+		"flowx 1.1.0",
+		"flowup 1.0.0",
 	}
 
 	buf, err := matchToolchain(local, remote)

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ai-shflow/shup/cmd"
+	"github.com/ai-flowx/flowup/cmd"
 )
 
 func main() {

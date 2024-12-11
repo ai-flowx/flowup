@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# shup shell setup
+# flowup shell setup
 # affix colons on either side of $PATH to simplify matching
 case ":${PATH}:" in
-    *:"$HOME/.shai/bin":*)
+    *:"$HOME/.flowx/bin":*)
         ;;
     *)
-        export PATH="$HOME/.shai/bin:$PATH"
+        export PATH="$HOME/.flowx/bin:$PATH"
         ;;
 esac

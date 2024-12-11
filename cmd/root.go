@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/ai-shflow/shup/config"
+	"github.com/ai-flowx/flowup/config"
 )
 
 var (
@@ -16,10 +16,10 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "shup",
+	Use:     "flowup",
 	Version: config.Version + "-build-" + config.Build,
-	Short:   "shai installer",
-	Long:    fmt.Sprintf("shai installer %s (%s %s)", config.Version, config.Commit, config.Build),
+	Short:   "flowx installer",
+	Long:    fmt.Sprintf("flowx installer %s (%s %s)", config.Version, config.Commit, config.Build),
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			_ = cmd.Help()
@@ -32,7 +32,7 @@ var rootCmd = &cobra.Command{
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	rootCmd.PersistentFlags().StringVar(&configFile, "config", "", "config file (default \"$HOME/.shai/shup.yml\")")
+	rootCmd.PersistentFlags().StringVar(&configFile, "config", "", "config file (default \"$HOME/.flowx/flowup.yml\")")
 	rootCmd.Root().CompletionOptions.DisableDefaultCmd = true
 }
 

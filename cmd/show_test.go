@@ -16,6 +16,5 @@ func TestFetchHost(t *testing.T) {
 func TestFetchToolchain(t *testing.T) {
 	buf, err := fetchToolchain("../test/install")
 	assert.Equal(t, nil, err)
-	assert.Equal(t, "shai 1.0.0", buf[0])
-	assert.Equal(t, "shup 1.0.0", buf[1])
+	assert.Equal(t, "flowup 1.0.0", buf[0])
 }

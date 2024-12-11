@@ -4,8 +4,8 @@ build=$(date +%FT%T%z)
 commit=$(git rev-parse --short HEAD)
 version="$1"
 
-ldflags="-s -w -X github.com/ai-shflow/shup/config.Build=$build -X github.com/ai-shflow/shup/config.Commit=$commit -X github.com/ai-shflow/shup/config.Version=$version"
-target="shup"
+ldflags="-s -w -X github.com/ai-flowx/flowup/config.Build=$build -X github.com/ai-flowx/flowup/config.Commit=$commit -X github.com/ai-flowx/flowup/config.Version=$version"
+target="flowup"
 
 go env -w GOPROXY=https://goproxy.cn,direct
 

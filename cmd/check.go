@@ -13,8 +13,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/ai-shflow/shup/artifact"
-	"github.com/ai-shflow/shup/config"
+	"github.com/ai-flowx/flowup/artifact"
+	"github.com/ai-flowx/flowup/config"
 )
 
 const (
@@ -24,8 +24,8 @@ const (
 
 var checkCmd = &cobra.Command{
 	Use:   "check",
-	Short: "Check for updates to toolchains and shup",
-	Long:  "Check for updates to toolchains and shup",
+	Short: "Check for updates to toolchains and flowup",
+	Long:  "Check for updates to toolchains and flowup",
 	Run: func(cmd *cobra.Command, args []string) {
 		var cfg config.Config
 		err := viper.Unmarshal(&cfg)

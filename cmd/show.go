@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/ai-shflow/shup/config"
+	"github.com/ai-flowx/flowup/config"
 )
 
 const (
@@ -95,7 +95,7 @@ func fetchToolchain(path string) ([]string, error) {
 		if len(buf) != showVersionLen {
 			return "", err
 		}
-		// shup version v1.0.0-build-2024-08-16T11:33:19+0800
+		// flowup version v1.0.0-build-2024-08-16T11:33:19+0800
 		name := buf[0]
 		version := strings.TrimPrefix(strings.Split(buf[2], "-")[0], "v")
 		return fmt.Sprintf("%s %s", name, version), nil

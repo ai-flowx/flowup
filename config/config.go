@@ -8,9 +8,9 @@ const (
 	ChannelNightly = "nightly"
 	ChannelRelease = "release"
 
-	RootName   = ".shai"
+	RootName   = ".flowx"
 	BinName    = RootName + "/" + "bin"
-	ConfigName = RootName + "/" + "shup.yml"
+	ConfigName = RootName + "/" + "flowup.yml"
 	EnvName    = RootName + "/" + "env"
 
 	BinPerm  = 0755
